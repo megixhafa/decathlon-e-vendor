@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Page</title>
+    <style>
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #fff;
+            color: #000;
+            padding: 1rem;
+            text-align: left;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header-logo {
+            max-width: 200px;
+            position: relative;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #3643BA;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .product-container {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 1rem;
+            text-align: center;
+            width: 300px;
+        }
+
+        .product-container h2 {
+            margin-bottom: 1rem;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #3643BA;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .search-container {
+            margin-right: 1rem;
+        }
+
+        .search-container input[type=text] {
+            padding: 0.5rem;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            font-size: 16px;
+        }
+
+        .search-container button {
+            padding: 0.5rem 1rem;
+            background-color: #3643BA;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #8BABFE;
+        }
+
+        .product-list {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product-container {
+            flex: 1;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-container h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .product-text {
+            flex: 1;
+            background-color: #fff;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .product-text {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-text h2 {
+            font-size: 1.5rem;
+            color: #3643BA;
+            margin-bottom: 10px;
+        }
+
+        .product-text p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .product-text p:first-of-type {
+            font-weight: bold;
+        }
+
+        .product-text p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .grid-container_d {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .product-item_d {
+            border: 1px solid #ccc;
+            padding: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .product-container_d img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 16px;
+        }
+
+        .product-text_d h2 {
+            font-size: 1.25em;
+            margin-bottom: 8px;
+        }
+
+        .product-text_d .dsm-filter {
+            display: block;
+            margin: 8px 0;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .product-text_d p {
+            font-size: 1em;
+            color: #333;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .search-container {
+                width: 100%;
+                margin: 1rem 0;
+                display: flex;
+                justify-content: center;
+            }
+
+            .search-container input[type=text] {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .product-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .grid-container_d {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-container,
+            .product-text {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="static/images/DKT_Lockup_Primary_Blue_RGB.png" alt="Retail Store Logo" class="header-logo">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/products/">Products</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input id="search-input" type="text" placeholder="Search...">
+            <button id="search-button">Search</button>
+        </div>
+    </header>
+    <main>
+        <div class="result-container" id="results">
+            <!-- Products will be dynamically inserted here -->
+            {% if random_products %}
+                <div class="grid-container_d">
+                    {% for product in random_products %}
+                        <div class="product-item_d">
+                            <section class="product-container_d">
+                                <img src="{{ product.img_url }}" alt="{{ product.mdl_label }}">
+                            </section>
+                            <section class="product-text_d">
+                                <h2>{{ product.mdl_label }}</h2>
+                                <button class="dsm-filter" data-dsm="{{ product.dsm }}">{{ product.dsm }}</button>
+                                <p>Price: {{ product.selling_price }}</p>
+                            </section>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Hackathon Team II</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to fetch random items
+            function fetchRandomItems() {
+                fetch('/random-items') // Replace with your endpoint to fetch random items
+                    .then(response => response.json())
+                    .then(data => {
+                        const resultsDiv = document.getElementById('results');
+                        resultsDiv.innerHTML = '';
+                        if (data.length === 0) {
+                            resultsDiv.innerHTML = '<p>No items found</p>';
+                        } else {
+                            data.forEach(item => {
+                                const productHTML = `
+                                    <div class="grid-container">
+                                        <!-- Repeat this structure for each product -->
+                                        <div class="product-list">
+                                            <section class="product-container">
+                                                <img src="${item.img_url}" alt="${item.mdl_label}">
+                                            </section>
+                                            <section class="product-text">
+                                                <h2>${item.mdl_label}</h2>
+                                                <p>DSM: ${item.dsm}</p>
+                                                {% comment %} <p>Description: ${item.product_description}</p> {% endcomment %}
+                                                <p>Price: ${item.selling_price}</p>
+                                                <p>Reference Number: ${item.ref}</p>
+                                            </section>
+                                        </div>
+                                        <!-- Repeat for other products -->
+                                    </div>
+                                `;
+                                resultsDiv.innerHTML += productHTML;
+                            });
+                        }
+                    });
+            }
+
+            // Initial load of random items when page loads
+            fetchRandomItems();
+
+            const dsmFilters = document.querySelectorAll('.dsm-filter');
+            dsmFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    const dsm = this.getAttribute('data-dsm');
+                    fetch(`/search/?query=${dsm}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const resultsDiv = document.getElementById('results');
+                            resultsDiv.innerHTML = '';
+                            if (data.length === 0) {
+                                resultsDiv.innerHTML = '<p>No results found</p>';
+                            } else {
+                                data.forEach(item => {
+                                    const productHTML = `
+                                        <div class="product-list">
+                                            <section class="product-container">
+                                                <img src="${item.img_url}">
+                                            </section>
+                                            <section class="product-text">
+                                                <h2>${item.mdl_label}</h2>
+                                                <p>DSM: ${item.dsm}</p>
+                                                <p>Description: ${item.product_description}</p>
+                                                <p>Price: ${item.selling_price}</p>
+                                                <p>Reference Number: ${item.ref}</p>
+                                            </section>
+                                        </div>
+
+                                        <div style="background-color: #3643BA; color: white; padding: 20px; border-radius: 10px; max-width: 800px; margin: auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                            <div class="product-list" style="display: flex; align-items: stretch;">
+                                                <section class="product-container" style="flex: 1; text-align: center; padding: 10px;">
+                                                    <img src="${item.img_url_comparable_product}" style="max-width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
+                                                </section>
+                                                <section class="product-text" style="flex: 1; text-align: center; padding: 10px; display: flex; flex-direction: column; justify-content: center;">
+                                                    <h2 style="margin-bottom: 10px;">What about this?</h2>
+                                                    <h3 style="margin-bottom: 10px; color: #3643BA">${item.dpt_label_close1}</h3>
+                                                    <p style="margin-bottom: 10px;">✨David's smart comparator says</p>
+                                                    <p>${item['LLM description']}</p>
+                                                    <p style="font-weight: bold; font-size: 1.2em;">Price: ${item.selling_price_close1}</p>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    `;
+                                    resultsDiv.innerHTML += productHTML;
+                                });
+                            }
+                        });
+                });
+            });
+
+            // Event listener for search button click
+            document.getElementById('search-button').onclick = function() {
+                const query = document.getElementById('search-input').value.trim();
+                if (query === '') {
+                    fetchRandomItems();
+                } else {
+                    fetch(`/search/?query=${query}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const resultsDiv = document.getElementById('results');
+                            resultsDiv.innerHTML = '';
+                            if (data.length === 0) {
+                                resultsDiv.innerHTML = '<p>No results found</p>';
+                            } else {
+                                data.forEach(item => {
+                                    const productHTML = `
+                                        <div class="product-list">
+                                            <section class="product-container">
+                                                <img src="${item.img_url}">
+                                            </section>
+                                            <section class="product-text">
+                                                <h2>${item.dpt_label}</h2>
+                                                <p>DSM: ${item.dsm}</p>
+                                                <p>Description: ${item.product_description}</p>
+                                                <p>Price: ${item.selling_price}</p>
+                                                <p>Reference Number: ${item.ref}</p>
+                                            </section>
+                                        </div>
+
+                                        <div style="background-color: #3643BA; color: white; padding: 20px; border-radius: 10px; max-width: 800px; margin: auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                            <div class="product-list" style="display: flex; align-items: stretch;">
+                                                <section class="product-container" style="flex: 1; text-align: center; padding: 10px;">
+                                                    <img src="${item.img_url_comparable_product}" style="max-width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
+                                                </section>
+                                                <section class="product-text" style="flex: 1; text-align: center; padding: 10px; display: flex; flex-direction: column; justify-content: center;">
+                                                    <h2 style="margin-bottom: 10px;">What about this?</h2>
+                                                    <h3 style="margin-bottom: 10px; color: #3643BA">${item.dpt_label_close1}</h3>
+                                                    <p style="margin-bottom: 10px;">✨David's smart comparator says</p>
+                                                    <p>${item['LLM description']}</p>
+                                                    <p style="font-weight: bold; font-size: 1.2em;">Price: ${item.selling_price_close1}</p>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    `;
+                                    resultsDiv.innerHTML += productHTML;
+                                });
+                            }
+                        });
+                }
+            };
+        });
+    </script>
+</body>
+</html>
