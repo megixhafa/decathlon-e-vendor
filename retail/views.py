@@ -11,7 +11,7 @@ from django.http import JsonResponse
 import pandas as pd
 
 # Load the CSV file
-df = pd.read_csv('static/all_data_with_summary_v3.csv')
+df = pd.read_csv('static/all_data_with_summary_v4.csv')
 
 
 def index(request):
